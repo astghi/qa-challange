@@ -5,7 +5,7 @@ services:
     image: localstack/localstack:0.10.8
     ports:
       - 4568:4568
-      - 8080:8080
+      - 8084:8085
     environment:
       - SERVICES=kinesis:4568
 
