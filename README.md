@@ -13,9 +13,9 @@ Php  test suit to test Kinesis Stream records
  Tests are stored under `test` directory. There we are first making the requests to have the records in each stream calling `TestDataBuilder`. Then we are consuming from both `odd` and `even` streams and make sure the requests for a seed can be found in expected stream records and not in the opposite one.
  
  ## To Run The Tests
- Prerequisite: We need a `composer` installed.
- Run `composer install`
- When successful run `./vendor/bin/phpunit src/test/`
+ - Prerequisite: We need a `composer` installed.
+ - Run `composer install`
+ - When successful run `./vendor/bin/phpunit src/test/`
  
  
 
