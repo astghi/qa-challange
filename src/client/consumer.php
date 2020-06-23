@@ -1,16 +1,15 @@
 <?php
 
-require './vendor/autoload.php';
+require_once './bootstrap.php';
 
-// $streamName = 'li-stream-even';
-function consumeFromStream($streamName) {
+function readFromStreamByName($streamName) {
 $numberOfRecordsPerBatch = 100;
 $records = [];
 
 $sharedConfig = [
-    'endpoint' => 'http://localhost:4568',
-    'region'  => 'eu-west-1',
-    'version' => 'latest'
+    'endpoint' => getenv('KINESIS_ENDPOINT'),
+    'region'  => getenv('KINESIS_REGION'),
+    'version' => getenv('KINESIS_VERSION')
 ];
 
 $kinesisClient = Aws\Kinesis\KinesisClient::factory($sharedConfig);

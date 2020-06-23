@@ -2,14 +2,15 @@
 
 // this is to make different requests to create test data 
 
-include "TestDataEntry.php";
+namespace Src\Data;
+
+use Src\Data\TestDataEntry;
 
 class TestDataBuilder {
     private $testData = [];
 
     private function getResponceHeaders($seed) {
     $transactionId = '';
-    // echo "Calling for : $seed ...";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "http://localhost:9000/route/" . $seed);
     curl_setopt( $ch, CURLOPT_HTTPHEADER, [

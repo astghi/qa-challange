@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-include "consumer.php";
-include "data/TestDataBuilder.php";
+require "./src/client/consumer.php";
+use Src\Data\TestDataBuilder;
 use PHPUnit\Framework\TestCase;
 
 class ConsumerTest extends TestCase {
@@ -15,8 +15,8 @@ class ConsumerTest extends TestCase {
     public function setUp() {
         $builder = new TestDataBuilder;
         $this->testData = $builder->buildData();
-        $this->recordsFromEvenStream = consumeFromStream('li-stream-even');
-        $this->recordsFromOddStream = consumeFromStream('li-stream-odd');
+        $this->recordsFromEvenStream = readFromStreamByName('li-stream-even');
+        $this->recordsFromOddStream = readFromStreamByName('li-stream-odd');
     }
 
     private function isRecordInAStream($transactionId, $seed,$records) {     
