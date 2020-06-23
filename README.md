@@ -1,3 +1,24 @@
+# Tests For LiveIntent's QA Coding Challenge
+Php  test suit to test Kinesis Stream records
+
+## Approach
+- To consume from Kinesis streams we are using `Consumer.php` in `client`. It is a service that required a **streamName
+ and returns an array of records in that stream.
+ -  All the configuration and environment variables live in .env file. There is where Kinesis endpoint is stored too.
+ -  `bootstrap.php` will load the configs in the .env and ensure autoload of classes.
+ - To collect test data we are using `TestDataBuilder.php` in `data`. This will curl the endpoint with different seeds and store the results in an array of `TestDataEntry`es.
+ 
+ ## Test
+ 
+ Tests are stored under `test` directory. There we are first making the requests to have the records in each stream calling `TestDataBuilder`. Then we are consuming from both `odd` and `even` streams and make sure the requests for a seed can be found in expected stream records and not in the opposite one.
+ 
+ ## To Run The Tests
+ Prerequisite: We need a `composer` installed.
+ Run `composer install`
+ When successful run `./vendor/bin/phpunit src/test/`
+ 
+ 
+
 # LiveIntent's QA Coding Challenge
 
 The goal of this coding challenge is to have you produce automated tests that shows us in concrete 
